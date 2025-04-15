@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0ra4s5sjqhu4"]
+
+[ext_resource type="PackedScene" uid="uid://c1roc4o11q4wk" path="res://Escenas/platraforma.tscn" id="1_5sfon"]
+[ext_resource type="PackedScene" uid="uid://cb0vlgx8ejc7h" path="res://Escenas/jump_king.tscn" id="2_bqhdr"]
+
+[node name="mundo" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_5sfon")]
+position = Vector2(523, 538)
+scale = Vector2(5, 1)
+
+[node name="Node2D2" parent="." instance=ExtResource("1_5sfon")]
+position = Vector2(848, 370)
+scale = Vector2(3, 0.6)
+
+[node name="Node2D3" parent="." instance=ExtResource("1_5sfon")]
+position = Vector2(252, 199)
+scale = Vector2(3, 0.6)
+
+[node name="Jump_King" parent="." instance=ExtResource("2_bqhdr")]
+position = Vector2(512, 402)
+scale = Vector2(2, 2)
