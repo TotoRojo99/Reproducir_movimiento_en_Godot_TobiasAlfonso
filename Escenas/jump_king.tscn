@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://cb0vlgx8ejc7h"]
+
+[ext_resource type="Texture2D" uid="uid://b2hw2mkx6dmal" path="res://Sprites/jump_king.png" id="1_ia7k7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjp8l"]
+atlas = ExtResource("1_ia7k7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ucl1"]
+atlas = ExtResource("1_ia7k7")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oub2w"]
+atlas = ExtResource("1_ia7k7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpxis"]
+atlas = ExtResource("1_ia7k7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n54lb"]
+atlas = ExtResource("1_ia7k7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xay7"]
+atlas = ExtResource("1_ia7k7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjtio"]
+atlas = ExtResource("1_ia7k7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nhekq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjp8l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ucl1")
+}],
+"loop": true,
+"name": &"jump_Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oub2w")
+}],
+"loop": true,
+"name": &"jump_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpxis")
+}],
+"loop": true,
+"name": &"prepare_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n54lb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xay7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjtio")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc2tg"]
+size = Vector2(24, 26)
+
+[node name="Jump_King" type="CharacterBody2D"]
+texture_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nhekq")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_cc2tg")
