@@ -9,11 +9,13 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	if Input.is_action_just_released("jump") and is_on_floor():
+		
 		velocity.y = jump_speed_base
 		
 	if Input.is_action_pressed("jump") and is_on_floor():
 		jump_speed_base -= 10  
-		$AnimatedSprite2D.animation = "prepare_jump"
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("prepare_jump")
 		speed = 0
 	
 	if is_on_floor() and !Input.is_action_pressed("jump"):
@@ -25,15 +27,19 @@ func _physics_process(delta):
 	
 	
 	var direction = Input.get_axis("ui_left","ui_right")
-	velocity.x = direction * speed
+	if is_on_floor():	
+		velocity.x = direction * speed
 		
 	
 	if velocity.x != 0 and is_on_floor():
-		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.play("walk")
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-	else:
-		$AnimatedSprite2D.animation = "idle"
-		
+	elif velocity.x == 0 and is_on_floor() and !Input.is_action_pressed("jump"):
+		$AnimatedSprite2D.play("idle")
+	
+	if !is_on_floor():
+		$AnimatedSprite2D.play("jump_up")	
+	
 	if !is_on_floor() and $AnimatedSprite2D.flip_h == true:
 		velocity.x = -300
 		
